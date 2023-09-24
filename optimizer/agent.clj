@@ -18,8 +18,7 @@
         json-body (json/write-str body)
         byte-array-body (.getBytes json-body "UTF-8")]
     (http/post url {:body byte-array-body
-                    :headers headers
-                    :debug true}))))
+                    :headers headers}))))
 (defn p+ [x]
   x
   (do
@@ -40,7 +39,7 @@
 ;;    :n n
    }))
 
-(defn query-gpt [query-params] 
+(defn *query-gpt [query-params] 
   (-> (post-gpt query-params)
       parse-response-body
       :choices
@@ -50,6 +49,8 @@
     ;;   p+
       ))
 
-(let [x "What did the cyclopse say to the upside-down turtle?"
-      query-params (get-query-params x)]
-  (query-gpt query-params))
+(defn query-gpt [& args]
+  (*query-gpt (apply get-query-params args)))
+
+(let [x "What did the cyclopse say to the upside-down turtle?"]
+  (query-gpt x "gpt-4" 0.5))
