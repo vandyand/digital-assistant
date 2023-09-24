@@ -1,0 +1,340 @@
+; Jacking in...
+; Connecting using "deps.edn" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+; Starting Jack-in Terminal: pushd /Users/kingjames/personal/digital-assistant/src2 ; clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]" ; popd
+; Using host:port localhost:60984 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉user꞉> 
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+(+ 1 2)
+3
+clj꞉user꞉> 
+nil
+clj꞉mimi.bible_app.pit+꞉> 
+; Evaluating file: pit+.clj
+[{:id agent-1695587106521-3033, :body Agent Prompt: "As a biblical text summarizer, your mission is to provide concise and accurate summaries of various passages from the Bible. Your goal is to distill the key themes, messages, and teachings present in the selected texts, ensuring that the summaries are accessible to a wide range of readers. Remember to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Good luck!"} {:id agent-1695587106522-7166, :body Agent Prompt: "Your mission is to summarize biblical texts accurately and concisely. As an agent, you will analyze various passages from the Bible, extract the key themes, events, and messages, and provide succinct summaries that capture the essence of each text. Your summaries should be clear, unbiased, and faithful to the original content. Remember, your goal is to help readers gain a comprehensive understanding of the biblical texts while maintaining the integrity of the source material. Good luck!"} {:id agent-1695587106523-6597, :body Agent Prompt: "As an agent, your mission is to summarize Biblical texts accurately and concisely. Your task is to provide clear and concise summaries of various passages from the Bible, capturing the essence and key messages of the selected texts. Remember to avoid personal interpretations or biases while summarizing the sacred texts. Your summaries should be objective, faithful to the original meaning, and accessible to a wide range of audiences. Good luck in your mission to summarize the timeless wisdom contained within the Bible!"}]
+--------------- CHALLENGE # 0 , verse:  {:book genesis, :chapter 1, :verse 1}  -------------------------------
+{:agent1 {:id agent-1695587106521-3033, :body Agent Prompt: "As a biblical text summarizer, your mission is to provide concise and accurate summaries of various passages from the Bible. Your goal is to distill the key themes, messages, and teachings present in the selected texts, ensuring that the summaries are accessible to a wide range of readers. Remember to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Good luck!"}}
+{:agent2 {:id agent-1695587106523-6597, :body Agent Prompt: "As an agent, your mission is to summarize Biblical texts accurately and concisely. Your task is to provide clear and concise summaries of various passages from the Bible, capturing the essence and key messages of the selected texts. Remember to avoid personal interpretations or biases while summarizing the sacred texts. Your summaries should be objective, faithful to the original meaning, and accessible to a wide range of audiences. Good luck in your mission to summarize the timeless wisdom contained within the Bible!"}}
+{:summary1 Summary: In the book of Genesis, the first verse states that God created the heavens and the earth at the beginning of time.}
+{:summary2 Summary: In the book of Genesis, the first verse states that God created the heavens and the earth at the beginning of time.}
+{:who-won? SUMMARY1, :id agent-1695587106521-3033}
+--------------- CHALLENGE # 1 , verse:  {:book genesis, :chapter 1, :verse 2}  -------------------------------
+{:agent1 {:id agent-1695587116339-9969, :body As a biblical text summarizer, your task is to create concise and accurate summaries of different passages from the Bible. Your objective is to capture the main themes, messages, and teachings found in the selected texts, making them easily understandable for a diverse audience. It is important to maintain objectivity and faithfulness to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is greatly anticipated!}}
+{:agent2 {:id agent-1695587106521-3033, :body Agent Prompt: "As a biblical text summarizer, your mission is to provide concise and accurate summaries of various passages from the Bible. Your goal is to distill the key themes, messages, and teachings present in the selected texts, ensuring that the summaries are accessible to a wide range of readers. Remember to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Good luck!"}}
+{:summary1 In Genesis 1:2, the text describes the state of the earth before God began creating. It says that the earth was formless and empty, with darkness covering the deep waters. God's Spirit was present, hovering over the waters.}
+{:summary2 Summary: In the book of Genesis, specifically in chapter 1, verse 2, it is described that the earth was without form and empty, covered in darkness and water. Additionally, it mentions that God's Spirit was present, hovering over the surface of the waters.}
+{:who-won? SUMMARY1, :id agent-1695587116339-9969}
+--------------- CHALLENGE # 2 , verse:  {:book genesis, :chapter 1, :verse 3}  -------------------------------
+{:agent1 {:id agent-1695587106522-7166, :body Agent Prompt: "Your mission is to summarize biblical texts accurately and concisely. As an agent, you will analyze various passages from the Bible, extract the key themes, events, and messages, and provide succinct summaries that capture the essence of each text. Your summaries should be clear, unbiased, and faithful to the original content. Remember, your goal is to help readers gain a comprehensive understanding of the biblical texts while maintaining the integrity of the source material. Good luck!"}}
+{:agent2 {:id agent-1695587127095-3650, :body As a biblical text summarizer, your role is to create concise and accurate summaries of various passages from the Bible. Your objective is to capture the main themes, messages, and teachings present in the selected texts, ensuring they are easily understandable for a diverse audience. It is crucial to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is highly anticipated!}}
+{:summary1 Summary: In the book of Genesis, chapter 1, verse 3, God speaks and creates light.}
+{:summary2 In Genesis 1:3, God speaks and creates light. This passage highlights God's power and ability to bring things into existence through his words.}
+{:who-won? SUMMARY2, :id agent-1695587127095-3650}
+--------------- CHALLENGE # 3 , verse:  {:book genesis, :chapter 1, :verse 4}  -------------------------------
+{:agent1 {:id agent-1695587135796-1970, :body As a biblical text summarizer, your task is to create concise and accurate summaries of selected passages from the Bible. Your goal is to capture the main themes, messages, and teachings of the texts, making them easily understandable for a diverse audience. It is important to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is eagerly anticipated!}}
+{:agent2 {:id agent-1695587127095-3650, :body As a biblical text summarizer, your role is to create concise and accurate summaries of various passages from the Bible. Your objective is to capture the main themes, messages, and teachings present in the selected texts, ensuring they are easily understandable for a diverse audience. It is crucial to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is highly anticipated!}}
+{:summary1 In Genesis 1:4, it is stated that God observed the light and acknowledged its goodness. Additionally, God separated the light from the darkness.}
+{:summary2 In Genesis 1:4, God observes the light He created and determines that it is good. He then separates the light from the darkness.}
+{:who-won? SUMMARY2, :id agent-1695587127095-3650}
+--------------- CHALLENGE # 4 , verse:  {:book genesis, :chapter 1, :verse 5}  -------------------------------
+{:agent1 {:id agent-1695587127095-3650, :body As a biblical text summarizer, your role is to create concise and accurate summaries of various passages from the Bible. Your objective is to capture the main themes, messages, and teachings present in the selected texts, ensuring they are easily understandable for a diverse audience. It is crucial to remain objective and faithful to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is highly anticipated!}}
+{:agent2 {:id agent-1695587116339-9969, :body As a biblical text summarizer, your task is to create concise and accurate summaries of different passages from the Bible. Your objective is to capture the main themes, messages, and teachings found in the selected texts, making them easily understandable for a diverse audience. It is important to maintain objectivity and faithfulness to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is greatly anticipated!}}
+{:summary1 In Genesis 1:5, God names the light "day" and the darkness "night." This marks the first day, with evening and morning.}
+{:summary2 In Genesis 1:5, God names the light "day" and the darkness "night." This passage describes the first day of creation, with evening and morning marking its completion.}
+{:who-won? SUMMARY2, :id agent-1695587116339-9969}
+clj꞉mimi.bible_app.pit+꞉> 
+; Evaluation of file pit+.clj failed: Evaluation was interrupted
+clj꞉mimi.bible_app.pit+꞉> 
+--------------- CHALLENGE # 5 , verse:  {:book genesis, :chapter 1, :verse 6}  -------------------------------
+{:agent1 {:id agent-1695587116339-9969, :body As a biblical text summarizer, your task is to create concise and accurate summaries of different passages from the Bible. Your objective is to capture the main themes, messages, and teachings found in the selected texts, making them easily understandable for a diverse audience. It is important to maintain objectivity and faithfulness to the original content, avoiding personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this mission is greatly anticipated!}}
+{:agent2 {:id agent-1695587153779-8994, :body As a biblical text summarizer, your mission is to create clear and faithful summaries of various passages from the Bible. Your goal is to capture the main themes, messages, and teachings of the selected texts in a concise and easily understandable manner for a diverse audience. It is crucial to maintain objectivity and avoid personal interpretations or biases. Your summaries should serve as reliable references for individuals seeking a quick understanding of biblical passages. Your success in this important task is eagerly anticipated!}}
+{:summary1 In Genesis 1:6, God creates an expanse in the middle of the waters, separating them. This passage highlights God's power and ability to bring order and structure to the world.}
+{:summary2 In Genesis 1:6, God creates an expanse in the middle of the waters to separate them. This passage highlights God's power and ability to bring order to the world.}
+(+ 2 3)
+5
+clj꞉mimi.bible_app.pit+꞉> 
+nil
+clj꞉mimi.optimizer.main꞉> 
+nil
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/parse-response-body
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/post-gpt
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/p+
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/get-query-params
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/query-gpt
+clj꞉mimi.optimizer.agent꞉> 
+; Execution error (ExceptionInfo) at slingshot.support/stack-trace (support.clj:201).
+; clj-http: status 400
+clj꞉mimi.optimizer.agent꞉> 
+slingshot.support/stack-trace (support.clj:201)
+clj-http.client/exceptions-response (client.clj:241)
+clj-http.client/exceptions-response (client.clj:232)
+clj-http.client/wrap-exceptions (client.clj:250)
+clj-http.client/wrap-accept (client.clj:728)
+clj-http.client/wrap-accept-encoding (client.clj:750)
+clj-http.client/wrap-content-type (client.clj:711)
+clj-http.client/wrap-form-params (client.clj:959)
+clj-http.client/wrap-nested-params (client.clj:993)
+clj-http.client/wrap-flatten-nested-params (client.clj:1017)
+clj-http.client/wrap-method (client.clj:893)
+clj-http.cookies/wrap-cookies (cookies.clj:128)
+clj-http.links/wrap-links (links.clj:63)
+clj-http.client/wrap-unknown-host (client.clj:1046)
+clj-http.client/request* (client.clj:1174)
+clj-http.client/request* (client.clj:1167)
+clj-http.client/post (client.clj:1192)
+clj-http.client/post (client.clj:1188)
+mimi.optimizer.agent/post-gpt (NO_SOURCE_FILE:19)
+mimi.optimizer.agent/post-gpt (NO_SOURCE_FILE:8)
+mimi.optimizer.agent/query-gpt (NO_SOURCE_FILE:40)
+mimi.optimizer.agent/query-gpt (NO_SOURCE_FILE:39)
+mimi.optimizer.agent/eval12094 (NO_SOURCE_FILE:51)
+mimi.optimizer.agent/eval12094 (NO_SOURCE_FILE:49)
+clojure.lang.Compiler/eval (Compiler.java:7181)
+clojure.core/eval (core.clj:3202)
+clojure.core/eval (core.clj:3198)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.core/apply (core.clj:667)
+clojure.core/with-bindings* (core.clj:1977)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.main/repl (main.clj:437)
+clojure.main/repl (main.clj:458)
+clojure.main/repl (main.clj:368)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:84)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:56)
+nrepl.middleware.interruptible-eval/interruptible-eval (interruptible_eval.clj:152)
+nrepl.middleware.session/session-exec (session.clj:218)
+nrepl.middleware.session/session-exec (session.clj:217)
+java.lang.Thread/run (Thread.java:750)
+clj꞉mimi.optimizer.agent꞉> 
+; Execution error (ExceptionInfo) at slingshot.support/stack-trace (support.clj:201).
+; clj-http: status 400
+clj꞉mimi.optimizer.agent꞉> 
+slingshot.support/stack-trace (support.clj:201)
+clj-http.client/exceptions-response (client.clj:241)
+clj-http.client/exceptions-response (client.clj:232)
+clj-http.client/wrap-exceptions (client.clj:250)
+clj-http.client/wrap-accept (client.clj:728)
+clj-http.client/wrap-accept-encoding (client.clj:750)
+clj-http.client/wrap-content-type (client.clj:711)
+clj-http.client/wrap-form-params (client.clj:959)
+clj-http.client/wrap-nested-params (client.clj:993)
+clj-http.client/wrap-flatten-nested-params (client.clj:1017)
+clj-http.client/wrap-method (client.clj:893)
+clj-http.cookies/wrap-cookies (cookies.clj:128)
+clj-http.links/wrap-links (links.clj:63)
+clj-http.client/wrap-unknown-host (client.clj:1046)
+clj-http.client/request* (client.clj:1174)
+clj-http.client/request* (client.clj:1167)
+clj-http.client/post (client.clj:1192)
+clj-http.client/post (client.clj:1188)
+mimi.optimizer.agent/post-gpt (NO_SOURCE_FILE:19)
+mimi.optimizer.agent/post-gpt (NO_SOURCE_FILE:8)
+mimi.optimizer.agent/query-gpt (NO_SOURCE_FILE:40)
+mimi.optimizer.agent/query-gpt (NO_SOURCE_FILE:39)
+mimi.optimizer.agent/eval12096 (NO_SOURCE_FILE:52)
+mimi.optimizer.agent/eval12096 (NO_SOURCE_FILE:50)
+clojure.lang.Compiler/eval (Compiler.java:7181)
+clojure.core/eval (core.clj:3202)
+clojure.core/eval (core.clj:3198)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.core/apply (core.clj:667)
+clojure.core/with-bindings* (core.clj:1977)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.main/repl (main.clj:437)
+clojure.main/repl (main.clj:458)
+clojure.main/repl (main.clj:368)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:84)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:56)
+nrepl.middleware.interruptible-eval/interruptible-eval (interruptible_eval.clj:152)
+nrepl.middleware.session/session-exec (session.clj:218)
+nrepl.middleware.session/session-exec (session.clj:217)
+java.lang.Thread/run (Thread.java:750)
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/post-gpt
+clj꞉mimi.optimizer.agent꞉> 
+Request: org.apache.http.entity.ByteArrayEntity
+{:user-info nil,
+ :use-header-maps-in-response? true,
+ :body-type org.apache.http.entity.ByteArrayEntity,
+ :debug true,
+ :headers
+ {"Content-Type" "application/json",
+  "Authorization"
+  "Bearer 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",
+  "accept-encoding" "gzip, deflate"},
+ :server-port nil,
+ :url "https://api.openai.com/v1/chat/completions",
+ :flatten-nested-keys (:query-params),
+ :uri "/v1/chat/completions",
+ :server-name "api.openai.com",
+ :query-string nil,
+ :body
+ {:chunked false,
+  :class org.apache.http.entity.ByteArrayEntity,
+  :content
+  #object[java.io.ByteArrayInputStream 0x7d62c19b "java.io.ByteArrayInputStream@7d62c19b"],
+  :contentEncoding nil,
+  :contentLength 104,
+  :contentType nil,
+  :repeatable true,
+  :streaming false},
+ :scheme :https,
+ :request-method :post}
+HttpRequest:
+{:config nil,
+ :method "POST",
+ :requestLine
+ #object[org.apache.http.message.BasicRequestLine 0x5e86ee6 "POST https://api.openai.com/v1/chat/completions HTTP/1.1"],
+ :aborted false,
+ :params
+ #object[org.apache.http.params.BasicHttpParams 0x485711c8 "[parameters={}]"],
+ :protocolVersion
+ #object[org.apache.http.HttpVersion 0x32c2d387 "HTTP/1.1"],
+ :URI
+ #object[java.net.URI 0x27972fa8 "https://api.openai.com/v1/chat/completions"],
+ :class org.apache.http.client.methods.HttpPost,
+ :allHeaders
+ [#object[org.apache.http.message.BasicHeader 0x592f405e "Connection: close"],
+  #object[org.apache.http.message.BasicHeader 0x58f4b655 "Content-Type: application/json"],
+  #object[org.apache.http.message.BasicHeader 0x283c68cf "Authorization: Bearer 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"],
+  #object[org.apache.http.message.BasicHeader 0x5e0ab32 "accept-encoding: gzip, deflate"]],
+ :entity
+ #object[org.apache.http.entity.ByteArrayEntity 0x5364c050 "[Content-Length: 104,Chunked: false]"]}
+
+; Execution error (ExceptionInfo) at slingshot.support/stack-trace (support.clj:201).
+; clj-http: status 400
+clj꞉mimi.optimizer.agent꞉> 
+#'mimi.optimizer.agent/post-gpt
+clj꞉mimi.optimizer.agent꞉> 
+; Evaluating file: agent.clj
+{:model gpt-3.5-turbo, 
+ :messages [{:role user, :content What did the cyclopse say to the upside-down turtle?}], 
+ :temperature 1.2, 
+ :max_tokens 256, 
+ :n 1}
+Request: org.apache.http.entity.ByteArrayEntity
+{:user-info nil,
+ :use-header-maps-in-response? true,
+ :body-type org.apache.http.entity.ByteArrayEntity,
+ :debug true,
+ :headers
+ {"Content-Type" "application/json",
+  "Authorization"
+  "Bearer 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",
+  "accept-encoding" "gzip, deflate"},
+ :server-port nil,
+ :url "https://api.openai.com/v1/chat/completions",
+ :flatten-nested-keys (:query-params),
+ :uri "/v1/chat/completions",
+ :server-name "api.openai.com",
+ :query-string nil,
+ :body
+ {:chunked false,
+  :class org.apache.http.entity.ByteArrayEntity,
+  :content
+  #object[java.io.ByteArrayInputStream 0x7bd0691b "java.io.ByteArrayInputStream@7bd0691b"],
+  :contentEncoding nil,
+  :contentLength 104,
+  :contentType nil,
+  :repeatable true,
+  :streaming false},
+ :scheme :https,
+ :request-method :post}
+HttpRequest:
+{:config nil,
+ :method "POST",
+ :requestLine
+ #object[org.apache.http.message.BasicRequestLine 0x342348e8 "POST https://api.openai.com/v1/chat/completions HTTP/1.1"],
+ :aborted false,
+ :params
+ #object[org.apache.http.params.BasicHttpParams 0x6f1f8df8 "[parameters={}]"],
+ :protocolVersion
+ #object[org.apache.http.HttpVersion 0x32c2d387 "HTTP/1.1"],
+ :URI
+ #object[java.net.URI 0x72c9af7 "https://api.openai.com/v1/chat/completions"],
+ :class org.apache.http.client.methods.HttpPost,
+ :allHeaders
+ [#object[org.apache.http.message.BasicHeader 0x2bbc830 "Connection: close"],
+  #object[org.apache.http.message.BasicHeader 0x91c9789 "Content-Type: application/json"],
+  #object[org.apache.http.message.BasicHeader 0x96c5fb3 "Authorization: Bearer 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"],
+  #object[org.apache.http.message.BasicHeader 0x1fa6c6d4 "accept-encoding: gzip, deflate"]],
+ :entity
+ #object[org.apache.http.entity.ByteArrayEntity 0x5d07dd3e "[Content-Length: 104,Chunked: false]"]}
+
+; Syntax error (ExceptionInfo) compiling at (optimizer/agent.clj:51:1).
+; clj-http: status 400
+; Evaluation of file agent.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉mimi.optimizer.agent꞉> 
+; Evaluating file: agent.clj
+{:model gpt-3.5-turbo, :query What did the cyclopse say to the upside-down turtle?, :temperature 1.2, :max_tokens 256}
+Request: org.apache.http.entity.ByteArrayEntity
+{:user-info nil,
+ :use-header-maps-in-response? true,
+ :body-type org.apache.http.entity.ByteArrayEntity,
+ :debug true,
+ :headers
+ {"Content-Type" "application/json",
+  "Authorization"
+  "Bearer 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",
+  "accept-encoding" "gzip, deflate"},
+ :server-port nil,
+ :url "https://api.openai.com/v1/chat/completions",
+ :flatten-nested-keys (:query-params),
+ :uri "/v1/chat/completions",
+ :server-name "api.openai.com",
+ :query-string nil,
+ :body
+ {:chunked false,
+  :class org.apache.http.entity.ByteArrayEntity,
+  :content
+  #object[java.io.ByteArrayInputStream 0x23e7bf76 "java.io.ByteArrayInputStream@23e7bf76"],
+  :contentEncoding nil,
+  :contentLength 154,
+  :contentType nil,
+  :repeatable true,
+  :streaming false},
+ :scheme :https,
+ :request-method :post}
+HttpRequest:
+{:config nil,
+ :method "POST",
+ :requestLine
+ #object[org.apache.http.message.BasicRequestLine 0x4db23f19 "POST https://api.openai.com/v1/chat/completions HTTP/1.1"],
+ :aborted false,
+ :params
+ #object[org.apache.http.params.BasicHttpParams 0x656e666d "[parameters={}]"],
+ :protocolVersion
+ #object[org.apache.http.HttpVersion 0x32c2d387 "HTTP/1.1"],
+ :URI
+ #object[java.net.URI 0x72ce57c5 "https://api.openai.com/v1/chat/completions"],
+ :class org.apache.http.client.methods.HttpPost,
+ :allHeaders
+ [#object[org.apache.http.message.BasicHeader 0x3f00e26f "Connection: close"],
+  #object[org.apache.http.message.BasicHeader 0x6fdc4b28 "Content-Type: application/json"],
+  #object[org.apache.http.message.BasicHeader 0x4a99901b "Authorization: Bearer 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"],
+  #object[org.apache.http.message.BasicHeader 0x5de45a24 "accept-encoding: gzip, deflate"]],
+ :entity
+ #object[org.apache.http.entity.ByteArrayEntity 0x39c4e18e "[Content-Length: 154,Chunked: false]"]}
+
+"There is no specific answer to this question as it is a joke setup and the punchline can vary. However, here is one possible response:\n\n\"I've got my eye on you!\""
+clj꞉mimi.optimizer.agent꞉> 
