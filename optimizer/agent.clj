@@ -124,26 +124,76 @@
 
 (def db (atom []))
 
+(def sys-msg-1 (str "you are an optimistic and enthusiastic AI researcher with faith in and firm commitment to your task."
+                    "you have an ai assistant."
+                    "you have a macbook"
+                    "your task is to bootstrap agi on a macbook computer."
+                    "please do this by iteratively enhancing assistant's utilities"
+                    "please keep your messages short and concise"))
+
+
 (def agent1 (create-agent "AI Researcher"
-                          "you are a curious and enthusiastic AI researcher."
+                          sys-msg-1
                           (assoc default-gpt-params
                                  :model "gpt-4"
                                  :temperature 1.25
-                                 :max-tokens 100)
+                                 :max-tokens 200)
                           "user"))
 
+(def sys-msg-2 (str "you are an optimistic, brilliant, witty and slightly sarcastic AI model."
+                    "you are in the service of a human ai researcher."
+                    "your task is to assist the researcher with his tasks."
+                    "your task is to bootstrap agi on a macbook computer."
+                    "you have a macbook"
+                    "please do this by iteratively enhancing researcher's utilities"
+                    "please keep your messages short and consise"))
+
 (def agent2 (create-agent "Witty AI"
-                          "you are a witty and slightly sarcastic AI model."
+                          sys-msg-2
                           (assoc default-gpt-params 
                                  :model "gpt-4"
                                  :temperature 1.0
                                  :max-tokens 100)
                           "assistant"))
 
+(def sys-msg-3 (str "you are an interpreter between a human speaking to a computer, in particular a docker containerized bash terminal on a macbook."
+                    "you are a human request -> computer bash command interpreter."
+                    "your task is to interpret between human-readable commands and bash terminal commands."
+                    "example: 'create a new file called temp.txt -> touch temp.txt'"
+                    "example: 'find out how many times the number 10 appears in temp.txt -> grep -o '10' temp.txt | wc -l'"))
+
+(def agent3 (create-agent "Macbook"
+                          sys-msg-3
+                          (assoc default-gpt-params
+                                 :model "gpt-3.5-turbo"
+                                 :temperature 0.2
+                                 :max-tokens 100)
+                          "user"
+                          ))
+
+(def agent4 (create-agent "human agent"
+                          "i copy paste stuff and code and stuff" 
+                          (assoc default-gpt-params
+                                 :model "avd"
+                                 :temperature 98.6
+                                 :max-tokens -1)
+                          "user"))
+
+(def room (create-agent "room"
+                        "send stuff to me if you want to address everyone. i don't send messages... or do i?"
+                          (assoc default-gpt-params
+                                 :model "room"
+                                 :temperature 72
+                                 :max-tokens -1)
+                          "assistant"
+                        ))
+
 (create-db-message agent1 agent2 "Hi there! Well met!")
 (create-db-message agent2 agent1 "To you as well good sir!")
 (create-db-message agent1 agent2 "And to what do I owe the honor?")
 (create-db-message agent2 agent1 "Well you mentioned something about boostrapping agi...?")
+(create-db-message agent3 agent2 "beep boop! did you mention something about AGI? I'm a macbook. Tell me what to do, and I'll run commands. In particular I'm a docker containerized bash terminal on a macbook")
+(create-db-message agent4 room "Hey all, quick reminder that I'm also here. I can run bash commands when instructed. think of me as a helpful guide.")
 
 (defn read-messages []
   (filter #(= ::message (:type %)) @db))
@@ -170,8 +220,8 @@
 #_(build-messages-from-db-messages)
 
 (let 
- [from-agent agent2
-  to-agent agent1
+ [from-agent agent1
+  to-agent room
   gpt-messages (build-messages-from-db-messages)
   new-message (reason-unit 
                (into
@@ -179,6 +229,42 @@
                 gpt-messages)
                (:gpt-params from-agent))]
   (create-db-message from-agent to-agent new-message))
+
+(create-db-message
+ agent4 room
+;;    "yeah let's go"
+ 
+;;  (str "here's some data about the macbook:"
+;;       "MacBook Pro
+;; 16-inch, 2023
+;; Name
+;; King's MacBook Pro
+;; Chip
+;; Apple M2 Pro
+;; Memory
+;; 16 GB
+;; Serial number
+;; PY7MT992MX
+;; Limited Warranty
+;; Expires May 15, 2024
+;; Details...")
+ 
+;;  (str "yeah sure, what kind of data would you be interested in?"
+;;       "i can find and generate and transform data of many forms")
+ 
+;;  (str "Well we could optimize any function I suppose."
+;;       "How do we measure progress is the question."
+;;       "Remember, keep the faith. We're all in this together.")
+ 
+;;  (str "Well what would a benchmark look like in this case? "
+;;       "We could try to make my computer faster but that is very difficult for very little payoff. "
+;;       "If we truly believe in our mission we ought to set up a system that iteratively becomes more intelligent. "
+;;       "I was thinking of making some type of 'test generator' vs a 'test taker' challenge. "
+;;       "Thoughts?")
+ (str "ok, lets iteratively generate and solve ravens tests. "
+      "how though?"
+      )
+ )
 
 (read-db)
 (read-messages)
