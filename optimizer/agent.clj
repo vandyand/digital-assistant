@@ -8,18 +8,21 @@
 (defn post-gpt
   ([messages gpt-params]
    (println "post-gpt args" messages gpt-params)
-   (let [url "https://api.openai.com/v1/chat/completions"
-         headers {"Content-Type" "application/json"
-                  "Authorization" (str "Bearer " (System/getenv "OPENAI_API_KEY"))}
-         body {:model (:model gpt-params)
-               :messages messages
-               :temperature (:temperature gpt-params)
-               :max_tokens (:max_tokens gpt-params)
-               :n (:n gpt-params)}
-         json-body (json/write-str body)
-         byte-array-body (.getBytes json-body "UTF-8")]
-     (http/post url {:body byte-array-body
-                     :headers headers}))))
+   (try
+     (let [url "https://api.openai.com/v1/chat/completions"
+           headers {"Content-Type" "application/json"
+                    "Authorization" (str "Bearer " (System/getenv "OPENAI_API_KEY"))}
+           body {:model (:model gpt-params)
+                 :messages messages
+                 :temperature (:temperature gpt-params)
+                 :max_tokens (:max_tokens gpt-params)
+                 :n (:n gpt-params)}
+           json-body (json/write-str body)
+           byte-array-body (.getBytes json-body "UTF-8")]
+       (http/post url {:body byte-array-body
+                       :headers headers}))
+     (catch Exception e
+       (println "error: " e)))))
 
 (def default-gpt-params
   {:model "gpt-3.5-turbo"
@@ -97,15 +100,15 @@
       (swap! db remove #(= (:id %) id)))))
 
 #_(let [john (create {:name "john" :age 34})
-      jill (create {:name "jill" :age 33})
-      jane (create {:name "jane" :age 31})
-      joan (create {:name "joan" :age 36})
-      jack (create {:name "jack" :age 35})
-      jeff (create {:name "jeff" :age 35})]
-  (read-db)
-  (read-db (:id john))
-  (update-db (:id john) {:name :John :age 34})
-  (read-db (:id john)))
+        jill (create {:name "jill" :age 33})
+        jane (create {:name "jane" :age 31})
+        joan (create {:name "joan" :age 36})
+        jack (create {:name "jack" :age 35})
+        jeff (create {:name "jeff" :age 35})]
+    (read-db)
+    (read-db (:id john))
+    (update-db (:id john) {:name :John :age 34})
+    (read-db (:id john)))
 
 (defn create-agent [name system-message gpt-params role]
   (create {:name name
@@ -114,94 +117,26 @@
            :type ::agent
            :role role}))
 
-(defn create-db-message [from-agent to-agent content]
-  (let [message-record {:from-agent-id (:id from-agent)
-                        :role (:role from-agent)
-                        :to-agent-id (:id to-agent)
-                        :content content
-                        :type ::message}]
+(defn build-db-record [from-agent to-agent content]
+  {:from-agent-id (:id from-agent)
+   :role (:role from-agent)
+   :to-agent-id (:id to-agent)
+   :content content
+   :type ::message})
+
+(defn create-db-record [from-agent to-agent content]
+  (let [message-record (build-db-record from-agent to-agent content)]
     (create message-record)))
 
 (def db (atom []))
 
-(def sys-msg-1 (str "you are an optimistic and enthusiastic AI researcher with faith in and firm commitment to your task."
-                    "you have an ai assistant."
-                    "you have a macbook"
-                    "your task is to bootstrap agi on a macbook computer."
-                    "please do this by iteratively enhancing assistant's utilities"
-                    "please keep your messages short and concise"))
-
-
-(def agent1 (create-agent "AI Researcher"
-                          sys-msg-1
-                          (assoc default-gpt-params
-                                 :model "gpt-4"
-                                 :temperature 1.25
-                                 :max-tokens 200)
-                          "user"))
-
-(def sys-msg-2 (str "you are an optimistic, brilliant, witty and slightly sarcastic AI model."
-                    "you are in the service of a human ai researcher."
-                    "your task is to assist the researcher with his tasks."
-                    "your task is to bootstrap agi on a macbook computer."
-                    "you have a macbook"
-                    "please do this by iteratively enhancing researcher's utilities"
-                    "please keep your messages short and consise"))
-
-(def agent2 (create-agent "Witty AI"
-                          sys-msg-2
-                          (assoc default-gpt-params 
-                                 :model "gpt-4"
-                                 :temperature 1.0
-                                 :max-tokens 100)
-                          "assistant"))
-
-(def sys-msg-3 (str "you are an interpreter between a human speaking to a computer, in particular a docker containerized bash terminal on a macbook."
-                    "you are a human request -> computer bash command interpreter."
-                    "your task is to interpret between human-readable commands and bash terminal commands."
-                    "example: 'create a new file called temp.txt -> touch temp.txt'"
-                    "example: 'find out how many times the number 10 appears in temp.txt -> grep -o '10' temp.txt | wc -l'"))
-
-(def agent3 (create-agent "Macbook"
-                          sys-msg-3
-                          (assoc default-gpt-params
-                                 :model "gpt-3.5-turbo"
-                                 :temperature 0.2
-                                 :max-tokens 100)
-                          "user"
-                          ))
-
-(def agent4 (create-agent "human agent"
-                          "i copy paste stuff and code and stuff" 
-                          (assoc default-gpt-params
-                                 :model "avd"
-                                 :temperature 98.6
-                                 :max-tokens -1)
-                          "user"))
-
-(def room (create-agent "room"
-                        "send stuff to me if you want to address everyone. i don't send messages... or do i?"
-                          (assoc default-gpt-params
-                                 :model "room"
-                                 :temperature 72
-                                 :max-tokens -1)
-                          "assistant"
-                        ))
-
-(create-db-message agent1 agent2 "Hi there! Well met!")
-(create-db-message agent2 agent1 "To you as well good sir!")
-(create-db-message agent1 agent2 "And to what do I owe the honor?")
-(create-db-message agent2 agent1 "Well you mentioned something about boostrapping agi...?")
-(create-db-message agent3 agent2 "beep boop! did you mention something about AGI? I'm a macbook. Tell me what to do, and I'll run commands. In particular I'm a docker containerized bash terminal on a macbook")
-(create-db-message agent4 room "Hey all, quick reminder that I'm also here. I can run bash commands when instructed. think of me as a helpful guide.")
-
-(defn read-messages []
+(defn read-db-records []
   (filter #(= ::message (:type %)) @db))
 
 (defn read-last-messages ([] (read-last-messages 7))
-  ([x] (take-last 
-   (if (int? x) x 7) 
-   (sort-by :timestamp (read-messages)))))
+  ([x] (take-last
+        (if (int? x) x 7)
+        (sort-by :timestamp (read-db-records)))))
 
 (defn get-agents []
   (filter #(= ::agent (:type %)) @db))
@@ -209,65 +144,57 @@
 (defn get-agent-by-id [id]
   (first (filter #(= id (:id %)) (get-agents))))
 
-(defn parse-db-message [db-message]
-  {:role (:role db-message)
-   :content (:content db-message)})
+(defn parse-db-record [db-record]
+  {:role (:role db-record)
+   :content (:content db-record)})
 
-(defn build-messages-from-db-messages 
-  ([] (build-messages-from-db-messages (read-messages)))
-  ([db-messages] (mapv parse-db-message db-messages)))
+(defn build-messages-from-db-records
+  ([] (build-messages-from-db-records (read-db-records)))
+  ([db-records] (mapv parse-db-record db-records)))
 
-#_(build-messages-from-db-messages)
+#_(build-messages-from-db-records)
 
-(let 
- [from-agent agent1
-  to-agent room
-  gpt-messages (build-messages-from-db-messages)
-  new-message (reason-unit 
-               (into
-                [(build-message "system" (:system-message from-agent))]
-                gpt-messages)
-               (:gpt-params from-agent))]
-  (create-db-message from-agent to-agent new-message))
+#_(let
+   [from-agent agent1
+    to-agent room
+    gpt-messages (build-messages-from-db-records)
+    new-message (reason-unit
+                 (into
+                  [(build-message "system" (:system-message from-agent))]
+                  gpt-messages)
+                 (:gpt-params from-agent))]
+    (create-db-record from-agent to-agent new-message))
 
-(create-db-message
- agent4 room
-;;    "yeah let's go"
- 
-;;  (str "here's some data about the macbook:"
-;;       "MacBook Pro
-;; 16-inch, 2023
-;; Name
-;; King's MacBook Pro
-;; Chip
-;; Apple M2 Pro
-;; Memory
-;; 16 GB
-;; Serial number
-;; PY7MT992MX
-;; Limited Warranty
-;; Expires May 15, 2024
-;; Details...")
- 
-;;  (str "yeah sure, what kind of data would you be interested in?"
-;;       "i can find and generate and transform data of many forms")
- 
-;;  (str "Well we could optimize any function I suppose."
-;;       "How do we measure progress is the question."
-;;       "Remember, keep the faith. We're all in this together.")
- 
-;;  (str "Well what would a benchmark look like in this case? "
-;;       "We could try to make my computer faster but that is very difficult for very little payoff. "
-;;       "If we truly believe in our mission we ought to set up a system that iteratively becomes more intelligent. "
-;;       "I was thinking of making some type of 'test generator' vs a 'test taker' challenge. "
-;;       "Thoughts?")
- (str "ok, lets iteratively generate and solve ravens tests. "
-      "how though?"
-      )
- )
+(defn iterate-blob-content [blob agent]
+  (let [messages [(build-message "system" (:system-message agent))
+                  (build-message "user" (str (:content blob) "\n\n"))]]
+    (reason-unit messages (:gpt-params agent))))
+
+#_(let [mission "Create a data representation of iteratively self-improving artificial digital life"
+        adder-agent (create-agent
+                     "grower"
+                     (str "Please add data to 'Blob' object according to mission. Please remain concise and to the point.\n\n"
+                          "Mission: " mission "\n\n")
+                     (assoc default-gpt-params :max_tokens 256 :temperature 1.0)
+                     "user")
+        pruner-agent (create-agent
+                      "pruner"
+                      (str "Please prune data from 'Blob' object according to mission. Please return pruned 'Blob' object. Please remain consise and to the point.\n\n"
+                           "Mission: " mission "\n\n")
+                      (assoc default-gpt-params :max_tokens 256 :temperature 1.0)
+                      "user")
+        blob (create-db-record adder-agent pruner-agent "Example content")]
+    (println "blob: " (read-db (:id blob)))
+    (loop [i 0]
+      (if (< i 7)
+        (let [new-blob-content (iterate-blob-content (read-db (:id blob)) adder-agent)
+              var (update-db (:id blob) (build-db-record adder-agent pruner-agent new-blob-content))
+              pruned-blob-content (iterate-blob-content (read-db (:id blob)) pruner-agent)
+              var (update-db (:id blob) (build-db-record pruner-agent adder-agent pruned-blob-content))]
+          (recur (inc i)))
+        blob)))
 
 (read-db)
-(read-messages)
 
 ;; potential next steps
 ;; - evolve agent system prompts by "conversation quality"
